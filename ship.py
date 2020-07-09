@@ -21,3 +21,11 @@ class ship(py.sprite.Sprite):
 
   def reset(self, pos):
     self.rect.center = pos
+
+
+
+def checkReset(self, endPos):
+  if self.rect.center[0] > endPos:
+    return True
+  else:
+    return False

@@ -1,4 +1,5 @@
 import pygame as py, random
+from py. locals import *
 from ship import *
 from asteroid import *
 
@@ -32,7 +33,7 @@ def init():
   Asteroids.empty()
   player.reset
 for i in range(AsteroidCount):
-  Asteroids.add(Asteroid((random.randint(0 , 800), random.randint(0, 600))))
+  Asteroids.add(asteroid((random.randint(0 , 800), random.randint(0, 600))))
 
 
 
@@ -61,6 +62,9 @@ def main():
     screen.blit(player.image, player.rect)
     player.update()
     py.display.flip()
+    
+    if player.checkReset == True(800):
+      init()
 
 
 
