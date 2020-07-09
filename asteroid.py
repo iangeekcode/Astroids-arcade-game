@@ -6,7 +6,7 @@ class asteroid(py.sprite.Sprite):
   def __init__(self, pos):
     super().__init__()
     self.image = py.image.load("asteroid.png")
-    self.image = py.transform.smoothscale(self.image, (40, 40))
+    self.image = py.transform.smoothscale(self.image(random.randint(0, 40), random.randint(0,40)))
     self.rect = self.image.get_rect()
     self.rect.center = pos
     self.speed = py.math.Vector2(0,0)

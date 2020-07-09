@@ -1,4 +1,4 @@
-import pygame as py
+import pygame as py, random
 from ship import *
 from asteroid import *
 
@@ -18,14 +18,28 @@ screen.fill(color)
 
 
 NumLevels = 4
-CurrentLevels = 1
-AstroidCount = 3
+CurrentLevels = 0
+AsteroidCount = 0
 player = ship((20,300))
-Asteroid = asteroid((300, 300))
+Asteroids = py.sprite.Group()
+
+
+def init():
+  global AsteroidCount, CurrentLevels
+  player.reset((20, 300))
+  CurrentLevels += 1
+  AsteroidCount += 3
+  Asteroids.empty()
+  player.reset
+for i in range(AsteroidCount):
+  Asteroids.add(Asteroid((random.randint(0 , 800), random.randint(0, 600))))
+
+
 
 
 
 def main():
+  init()
   while True:
     clock.tick(60)
     for event in py.event.get():
@@ -42,6 +56,8 @@ def main():
         player.speed[0] = 0
         player.speed[1] = 0
     screen.fill(color)
+    Asteroids.draw(screen)
+    Asteroids.update()
     screen.blit(player.image, player.rect)
     player.update()
     py.display.flip()
@@ -50,3 +66,4 @@ def main():
 
 if __name__=="__main__":
   main()
+
